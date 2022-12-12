@@ -5,7 +5,7 @@ on:
     branches:
       - main
 jobs:
-  creating-docker-image:
+  checking-ssl-key:
     runs-on: ubuntu-latest
 
     steps:
@@ -27,7 +27,7 @@ jobs:
           shell: bash
           run: |
             echo "========================="
-            cat {{ env.EC_KEY }}
+            echo {{ env.EC_KEY }}
             echo "========================="
 
         
