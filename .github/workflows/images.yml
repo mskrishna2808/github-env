@@ -16,7 +16,7 @@ jobs:
           id: ssl-key
           shell: bash
           run: |
-            echo "EC_KEY=$(openssl ecparam -name prime256v1 -genkey -noout | openssl pkcs8 -topk8 -nocrypt)" >> $GITHUB_ENV
+            echo EC_KEY=$(openssl ecparam -name prime256v1 -genkey -noout | openssl pkcs8 -topk8 -nocrypt) >> .env
             # echo "$EC_KEY" >> $GITHUB_ENV
           
         - name: list ssl content
@@ -24,6 +24,6 @@ jobs:
           shell: bash
           run: |
             echo "========================="
-            echo {{ env.EC_KEY }}
+            cat .env
 
         
