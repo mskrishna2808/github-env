@@ -27,7 +27,7 @@ jobs:
           shell: bash
           run: |
             echo "========================="
-            echo {{ env.EC_KEY }}
+            echo "key is {{ env.EC_KEY }}"
             echo "========================="
 
         
