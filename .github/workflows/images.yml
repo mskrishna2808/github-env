@@ -1,0 +1,29 @@
+name: Github Env Checking
+
+on: 
+  push:
+    branches:
+      - main
+jobs:
+  creating-docker-image:
+    runs-on: ubuntu-latest
+
+    steps:
+        - name: git checkout
+          uses: actions/checkout@v3
+
+        - name: creating ssl key
+          id: ssl-key
+          shell: bash
+          run: |
+            EC_KEY=$(openssl ecparam -name prime256v1 -genkey -noout | openssl pkcs8 -topk8 -nocrypt)
+            echo "$EC_KEY" >> $GITHUB_ENV
+          
+        - name: list ssl content
+          id: list-ssl-key
+          shell: bash
+          run: |
+            echo "========================="
+            echo {{ env.EC_KEY }}
+
+        
